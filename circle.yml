@@ -14,7 +14,7 @@ jobs:
       - run:
           name: execute the current script
           command: 
-              -sh ./test.sh
+              - sh ./test.sh
 dependencies:
   pre:
     - sudo apt-get update -y
