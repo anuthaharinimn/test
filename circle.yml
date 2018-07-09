@@ -11,6 +11,9 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+      - run:
+          name: execute the current script
+          command: ./test.sh
 dependencies:
   pre:
     - sudo apt-get update -y
@@ -19,4 +22,4 @@ dependencies:
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
-#echo "hello circle"
+   
