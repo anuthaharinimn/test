@@ -11,9 +11,9 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
-      - run:
-          name: execute the current script
-          command: 
+     # - run:
+       #   name: execute the current script
+        ##  command: 
               - bash ./test.sh
 dependencies:
   pre:
@@ -23,4 +23,5 @@ dependencies:
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
+    - bash ./test.sh
    
