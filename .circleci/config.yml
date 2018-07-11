@@ -1,23 +1,21 @@
-machine:
-  timezone:
-    Asia/Kolkata
-  python:
-    version:
-      3.6.1
-  environment:
+version: 2
+jobs:
+  build:
+   timezone:
+     Asia/Kolkata
+   python:
+     version:
+       3.6.1
+   environment:
     DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/test_ilp
     POSTGRES_USER: ubuntu 
     POSTGRES_DB: test_ilp
-
-
 general:
   branches:
     only:
-      - master
+      - master      
   artifacts:
     - /tmp/artifacts
-
-
 dependencies:
   pre:
     - sudo apt-get update
@@ -26,8 +24,7 @@ dependencies:
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
-    - source venv/bin/activate 
-  
+    - source venv/bin/activate
   cache_directories:
     - "venv"   # relative to the build directory
 
@@ -42,4 +39,4 @@ test:
     - mkdir -p /tmp/artifacts
 
   post:
-    - git clean -dxf            # clean up for deployment
+    - git clean -dxf
