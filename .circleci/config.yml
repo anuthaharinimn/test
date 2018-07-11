@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/api
    timezone:
      Asia/Kolkata
    python:
@@ -14,7 +13,8 @@ jobs:
 general:
   branches:
     only:
-      - master      
+      - nextrelease
+      - /*/
   artifacts:
     - /tmp/artifacts
 dependencies:
@@ -40,4 +40,4 @@ test:
     - mkdir -p /tmp/artifacts
 
   post:
-    - git clean -dxf
+    - git clean -dxf        
