@@ -1,5 +1,4 @@
-version: 2
-jobs: 
+machine:
   timezone:
     Asia/Kolkata
   python:
@@ -14,20 +13,37 @@ jobs:
 general:
   branches:
     only:
-      - master
+      - /*/
   artifacts:
     - /tmp/artifacts
 
 
 dependencies:
   pre:
-    - sudo apt-get update -y
+    - sudo apt-get update
     - sudo apt-get install -y libgdal-dev
     - sudo apt-get install -y postgis
     - sudo apt-get install -y postgresql-client
     - sudo apt-get install -y python-virtualenv
     - python -m venv venv
-    
+    - source venv/bin/activate 
   
-  ##cache_directories:
-  #  - "venv"   # relative to the build directory
+  cache_directories:
+    - "venv"   # relative to the build directory
+
+
+database:
+  pre:
+    - sudo apt-get update -y
+
+
+test:
+  override:
+    - . venv/bin/activate && coverage run --source='.' --omit='venv/*' 
+    - . venv/bin/activate && coverage report
+    - . venv/bin/activate && coverage html
+    - mkdir -p /tmp/artifacts
+    - mv htmlcov /tmp/artifacts
+
+  post:
+    - git clean -dxf            # clean up for deployment
