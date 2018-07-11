@@ -39,9 +39,6 @@ database:
 
 test:
   override:
-    - . venv/bin/activate && coverage run --source='.' --omit='venv/*' 
-    - . venv/bin/activate && coverage report
-    - . venv/bin/activate && coverage html
     - mkdir -p /tmp/artifacts
 
   post:
