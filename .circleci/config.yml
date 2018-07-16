@@ -32,11 +32,12 @@ jobs:
        - run:
           name: Install awscli
           command: 'sudo pip install awscli'
-          workflows:
-  version: 2
-  deploy:
-    jobs:
-      - deploy:
+  workflows:
+   version: 2
+   deploy:
+     jobs:
+       - deploy:
           filters:
             branches:
-              only: master
+              only: test
+  
