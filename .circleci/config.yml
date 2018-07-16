@@ -13,11 +13,6 @@ jobs:
           POSTGRES_DB: test_ilp
     steps:
       - checkout
-      ##- run: sudo chown -R circleci:circleci /usr/local/bin
-      #- run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
-      - restore_cache:
-          key: deps9-{{ .Branch }}
-          #-{{ checksum "Pipfile.lock" }}
       - run:
           command: |
             sudo apt-get update -y
@@ -27,21 +22,14 @@ jobs:
             sudo apt-get install -y postgresql-client
             sudo apt-get install -y python-virtualenv
             python -m venv venv
-            source venv/bin/activate && pip install -r requirements/test.txt
-           
-     # - save_cache:
-      #      key: deps9-{{ .Branch }}
-       #-{{ checksum "Pipfile.lock" }}
+            #pipenv install
           paths:
             - ".venv"
-            - "/usr/local/bin"  
-            - "/usr/local/lib/python3.6/site-packages
-test:
-   - run:
-      command:
-          # pipenv run "python manage.py test"
-          mkdir -p /tmp/artifacts
-          #mv htmlcov /tmp/artifacts
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
+      #- run:
+          #command: |
+            #pipenv run "python manage.py test"
       - store_test_results:
           path: test-results
       - store_artifacts:
