@@ -45,4 +45,4 @@ workflows:
           filters:
             branches:
               #only: nextrelease
-              only: master
+              only: test
