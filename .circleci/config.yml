@@ -20,3 +20,12 @@ jobs:
       - run:
           name: Install awscli
           command: 'sudo pip install awscli'
+      - run:
+          name: Install pip
+          command: |
+              sudo apt-get update -y && sudo apt-get install python-pip -y \
+              sudo apt-get install -y libgdal-dev \
+              sudo apt-get install -y postgis
+              sudo apt-get install -y postgresql-client
+              sudo apt-get install -y python-virtualenv
+              python -m venv venv
