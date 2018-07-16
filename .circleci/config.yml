@@ -33,11 +33,4 @@ jobs:
       mkdir -p /tmp/artifacts
       mv htmlcov /tmp/artifacts
       
-workflows:
-  version: 2
-  test:
-    jobs:
-      - test:
-          filters:
-            branches:
-              only: test
+
