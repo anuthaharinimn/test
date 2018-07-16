@@ -32,6 +32,7 @@ jobs:
       venv/bin/activate && coverage html \
       mkdir -p /tmp/artifacts
       mv htmlcov /tmp/artifacts
+      
 workflows:
   version: 2
   test:
