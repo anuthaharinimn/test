@@ -36,8 +36,11 @@ jobs:
    version: 2
    deploy:
      jobs:
-       - deploy:
+       - build:
+       - test
           filters:
             branches:
               only: test
+              
+   
   
