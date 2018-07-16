@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
 
-  deploy:
+  test: 
     docker:
       # Python image required for AWS client
       - image: circleci/python:2.7
