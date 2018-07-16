@@ -35,9 +35,9 @@ jobs:
 workflows:
   version: 2
      test:
-     jobs:
+      jobs:
        - build:
-       - test
+       - test: 
           filters:
             branches:
               only: test
