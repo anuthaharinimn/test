@@ -30,7 +30,7 @@ jobs:
     -run:
       command: |
       #. venv/bin/activate && coverage run --source='.' --omit='venv/*' manage.py test boundary users assessments \
-      . venv/bin/activate && coverage report 
+      . venv/bin/activate && coverage report \
       . venv/bin/activate && coverage html \
       mkdir -p /tmp/artifacts 
       #mv htmlcov /tmp/artifacts
