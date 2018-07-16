@@ -34,12 +34,12 @@ jobs:
           command: 'sudo pip install awscli'
 workflows:
   version: 2
-     test:
-      jobs:
-       - test: 
-          filters:
-            branches:
-              only: test
+        test:
+        jobs:
+        - test: 
+           filters:
+             branches:
+               only: test
               
    
   
