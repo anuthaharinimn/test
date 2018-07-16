@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Install pip
           command: |
-              sudo apt-get update -y \
+              sudo apt-get update \
               sudo apt-get install python-pip -y \
               sudo apt-get install -y libgdal-dev \
               sudo apt-get install -y postgis \
