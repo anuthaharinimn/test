@@ -28,14 +28,14 @@ jobs:
             python -m venv venv
             #pipenv install
       - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+       #   key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.6/site-packages"
-      - run:
-          command: |
-            pipenv run "python manage.py test"
+      #- run:
+          #command: |
+            #pipenv run "python manage.py test"
       - store_test_results:
           path: test-results
       - store_artifacts:
