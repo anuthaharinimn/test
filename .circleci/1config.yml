@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+    working_directory: ~/testcircleci
+    steps:
+      - checkout
+
+  deploy:
+    docker:
+      # Python image required for AWS client
+      - image: circleci/python:2.7
+    working_directory: ~/testcircleci
+    steps:
+      - checkout
+      - run:
+          name: Install pip
+          command: |
+              sudo apt-get update -y && sudo apt-get install python-pip -y \
+              sudo apt-get install -y libgdal-dev \
+              sudo apt-get install -y postgis
+              sudo apt-get install -y postgresql-client
+              sudo apt-get install -y python-virtualenv
+              python -m venv venv
+              #source venv/bin/activate && pip install -r requirements/test.txt 
+      - run:
+          name: Install awscli
+          command: 'sudo pip install awscli -y'
+      - run:
+          name: Deploy using CodeDeploy
+          #command: |
+            ##aws deploy create-deployment \
+           #### --application-name ilp \
+            #--deployment-config-name CodeDeployDefault.OneAtATime \
+            #--deployment-group-name ilpdev-group \
+           # --ignore-application-stop-failures \
+            ##--description 'ILP GitHub deployment' \
+           # --github-location repository=klpdotorg/ilp,commitId=${CIRCLE_SHA1}
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              #only: nextrelease
+              only: master
