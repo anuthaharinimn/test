@@ -1,12 +1,12 @@
 version: 2
 jobs:
-build:
+  build:
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/testcirlceci
     steps:
       - checkout
-test:
+  test:
     docker:
       # Python image required for AWS client
       - image: circleci/python:2.7
